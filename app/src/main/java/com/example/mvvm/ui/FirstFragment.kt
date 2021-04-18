@@ -10,7 +10,6 @@ import com.example.mvvm.R
 import com.example.mvvm.ViewModel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_first.*
 
-
 class FirstFragment : Fragment() {
 
     private  val viewModel: MainViewModel by activityViewModels()
@@ -18,7 +17,6 @@ class FirstFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_first, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

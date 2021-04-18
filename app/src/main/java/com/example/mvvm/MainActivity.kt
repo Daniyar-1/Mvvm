@@ -2,15 +2,10 @@ package com.example.mvvm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
-import com.example.mvvm.ViewModel.MainViewModel
 import com.example.mvvm.adapters.VpFragmentAdapter
-import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_first.*
 import kotlinx.android.synthetic.main.fragment_second.*
 
@@ -21,17 +16,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val adapter = VpFragmentAdapter(this, 3)
-        val viewPager = findViewById<ViewPager2>(R.id.vp_main)
+        val viewPager = vp_main
         viewPager.adapter = adapter
 
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_nav)
         bottomNav.setOnNavigationItemSelectedListener {
-            if (it.itemId == R.id.menu_add_or_subtract) {
-                viewPager.setCurrentItem(0)
-            } else if (it.itemId == R.id.menu_total) {
-                viewPager.setCurrentItem(1)
-            } else if (it.itemId == R.id.menu_print) {
-                viewPager.setCurrentItem(2)
+            when (it.itemId) {
+                R.id.menu_add_or_subtract -> {
+                    viewPager.currentItem = 0
+                }
+                R.id.menu_total -> {
+                    viewPager.currentItem = 1
+                }
+                R.id.menu_print -> {
+                    viewPager.currentItem = 2
+                }
             }
             return@setOnNavigationItemSelectedListener true
         }
